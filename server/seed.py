@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from random import choice as rc
 
 from faker import Faker
@@ -16,7 +14,7 @@ with app.app_context():
     Enclosure.query.delete()
 
     zookeepers = []
-    for n in range(25):
+    for n in range(10):
         zk = Zookeeper(name=fake.name(), birthday=fake.date_between(
             start_date='-70y', end_date='-18y'))
         zookeepers.append(zk)
@@ -26,7 +24,7 @@ with app.app_context():
     enclosures = []
     environments = ['Desert', 'Pond', 'Ocean', 'Field', 'Trees', 'Cave', 'Cage']
 
-    for n in range(25):
+    for n in range(10):
         e = Enclosure(environment=rc(environments), open_to_visitors=rc([True, False]))
         enclosures.append(e)
 
@@ -36,7 +34,7 @@ with app.app_context():
     species = ['Lion', 'Tiger', 'Bear', 'Hippo', 'Rhino', 'Elephant', 'Ostrich',
         'Snake', 'Monkey']
 
-    for n in range(200):
+    for n in range(20):
         name = fake.first_name()
         while name in [a.name for a in animals]:
             name=fake.first_name()
